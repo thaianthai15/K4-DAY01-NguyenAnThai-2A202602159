@@ -99,9 +99,7 @@ Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_pred
 | Tác vụ | Đơn vị/định dạng ground truth | Lỗi hoặc điểm mơ hồ quan sát được | Annotator làm gì? | Reviewer xem gì? |
 | --- | --- | --- | --- | --- |
 | Phân loại ảnh | Image-level label: mỗi ảnh có một class_id / class_name tương ứng với nhãn của ảnh. | Ảnh khó phân loại, nhiều đối tượng/lớp cùng xuất hiện, ảnh mờ hoặc không đủ thông tin để xác định class. | Gán đúng class theo guideline; đánh dấu/escalate các ảnh không đủ thông tin hoặc class không rõ. | Kiểm tra class có đúng với nội dung ảnh không; kiểm tra các trường hợp borderline và ảnh bị gán nhầm class. |
-
 | Phát hiện vật thể | Bounding box dạng bbox_xyxy + class_id / class_name cho từng object. | Box quá rộng/hẹp, bỏ sót object, box bao gồm quá nhiều background, nhầm class, object bị che khuất. | Vẽ box bao quanh object theo guideline; gán class; xử lý từng object riêng biệt; escalate nếu không xác định được ranh giới hoặc class. | Kiểm tra đủ object chưa, class đúng chưa, box có bao sát object không, có box thừa/trùng không và các trường hợp occlusion.|
-
 | Instance segmentation | Polygon/mask cho từng instance + instance_id, class_id, class_name, score; polygon được biểu diễn bằng các điểm polygon_xy. | Biên object khó xác định, vùng mờ, object tiếp xúc nhau, bị che khuất, polygon quá thô hoặc lấn sang background. | Vẽ polygon bám theo biên thực tế của từng instance; mỗi object có instance riêng; không tự suy diễn phần bị che nếu guideline không cho phép; escalate trường hợp không thể xác định nhất quán. | Kiểm tra polygon có bám biên không, có bỏ sót/lấn vùng không, instance_id có phân biệt đúng từng object không, và xử lý các trường hợp contact/occlusion có nhất quán không. |
 
 ## 5. An toàn dữ liệu
